@@ -1,0 +1,87 @@
+
+/* Scroll Bar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #3c445d;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-corner {
+    background: #1e222f;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+    font-size: 62.5%;
+    font-size: 10px;
+}
+
+/* Home section */
+
+.home {
+    padding: 20rem 10rem 10rem 10rem;
+    align-items: start;
+    height: 100vh;
+    background-position: center top;
+    background-size: cover;
+}
+
+.navTrigger {
+    display: none;
+}
+
+.nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+/* Media qurey section */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .navTrigger {
+        display: block;
+    }
+
+    .nav div.logo {
+        margin-left: 15px;
+    }
+
+    .nav div.main_list {
+        width: 100vw;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .nav div.show_list {
+        height: auto;
+        display: none;
+    }
+
+    .nav div.media_button {
+        display: block;
+    }
+}
+
+.affix {
+    padding: 0;
+    background-color: #1e222f;
+}
