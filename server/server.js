@@ -36,32 +36,16 @@ app.use(auth(config));
 
 // Middleware to make the `user` object available for all views
 app.use(function (req, res, next) {
+  // console.log(req.oidc.user);
   res.locals.user = req.oidc.user;
   next();
 });
 
-//Send the html files?
+//Send the html files
 app.use(express.static("../client/dist"));
 app.use(express.json());
 
-// function html(req, res, next) {
-//   if (req.accepts("html")) {
-//     next();
-//   } else {
-//     next("route");
-//   }
-// }
-
-// app.get("*", html, (req, res) => {
-//   res.sendFile(path.resolve('..', 'client', 'dist', 'index.html'));
-// });
-
-
-// app.get("/", (req, res, next) => {
-//   res.send(`<a href="/login">login</a><br/><a href="/logout">logout</a>`);
-// })
-
-app.use("api", api);
+app.use("/api", api);
 
 app.use((req, res) => {
   res.sendStatus(404);
