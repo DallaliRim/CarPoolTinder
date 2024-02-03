@@ -19,10 +19,12 @@ const routes = [
   ,
 ];
 
+const router = createBrowserRouter(routes);
+
 function App() {
   const [count, setCount] = useState(0);
 
-  return <RouterProvider router={routes}></RouterProvider>;
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
