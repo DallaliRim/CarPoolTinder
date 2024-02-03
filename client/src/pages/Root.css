@@ -24,12 +24,13 @@ body {
     box-sizing: border-box;
     font-family: "Quicksand", sans-serif;
     font-size: 62.5%;
-    font-size: 10px;
+    font-size: 20px;
+    color: black;
 }
 
 /* Home section */
 
-.home {
+.content {
     padding: 20rem 10rem 10rem 10rem;
     align-items: start;
     height: 100vh;

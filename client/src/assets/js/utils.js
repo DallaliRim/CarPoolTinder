@@ -1,3 +1,3 @@
-import { SERVER_URL } from "./consts";
+// import { SERVER_URL } from "./consts";
 
 // utility functions

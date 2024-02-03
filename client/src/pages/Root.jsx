@@ -6,7 +6,9 @@ function Root() {
   return (
     <div className="App">
       <NavBar />
-      <Outlet></Outlet>
+      <Outlet className="content">
+
+      </Outlet>
     </div>
   );
 }
