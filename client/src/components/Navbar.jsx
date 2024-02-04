@@ -34,7 +34,7 @@ function NavBar() {
         <div className="spacer" />
         <div className="main_list">
           <ul className="navlinks">
-            <li><NavLink className="navlink" to="/">Home</NavLink></li>
+            {/* TODO DISPLAY LOGIN IF NOT LOGGED IN */}
             <li><NavLink className="navlink" to="/profile">Profile</NavLink></li>
           </ul>
         </div>

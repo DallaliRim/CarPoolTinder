@@ -1,7 +1,10 @@
 // import React from "react";
+import AccountInfo from "../components/AccountCreation/AccountInfo";
 
 function CreateAccount() {
-  return <div>CreateAccount</div>;
+  return (
+    <AccountInfo />
+  );
 }
 
 export default CreateAccount;
