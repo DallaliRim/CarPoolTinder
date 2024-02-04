@@ -98,7 +98,7 @@ function Profile() {
 
                 <Col md={6}>
                   <Form.Group controlId="formBasicAge">
-                    <Form.Label>Last Name</Form.Label>
+                    <Form.Label>Age</Form.Label>
                     <Form.Control
                       type="number"
                       name="age"
