@@ -47,10 +47,9 @@ app.use(express.json());
 
 app.use("/api", api);
 
-app.use((req, res) => {
-  res.sendStatus(404);
-})
-
-http.createServer(app).listen(port, () => {
-  console.log(`Listening on ${config.baseURL}`);
+//default 404 route
+app.use(function (_, res) {
+  res.status(404).json({ error: "Not Found" });
 });
+
+export default app;

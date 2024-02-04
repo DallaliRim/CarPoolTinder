@@ -1,7 +1,6 @@
 import express from "express";
 import { userRouter } from "./users.js";
 import mongoose from "mongoose";
-import createHttpError from "http-errors";
 
 
 const router = express.Router()
@@ -20,7 +19,6 @@ router.use(dbConnected);
 
 function dbConnected(_, __, next) {
   if (mongoose.connection.readyState !== 1) {
-    next(new createHttpError.InternalServerError("Database is unavailable"));
     if (!process.env.ATLAS_URI) {
       console.error("Trying to reconnect to the db but there is no atlas uri");
       return;
@@ -35,13 +33,4 @@ function dbConnected(_, __, next) {
 router.use(express.json());
 router.use(userRouter);
 
-function handleHttpErrors(error, _, res, next) {
-  if (error instanceof createHttpError.HttpError) {
-    res.status(error.status).json({ "error": error.message });
-    return;
-  }
-  next(error);
-}
-
-router.use(handleHttpErrors);
 export default router

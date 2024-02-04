@@ -1,9 +1,8 @@
-import app from "../routes/app.js";
+import app from "../server.js";
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 dotenv.config();
-const PORT = 3000;
-const ATLAS_URI = "mongodb+srv://dallalirim1:uNrO33FIgSRiNUpt@carpooltinder.ndabqc4.mongodb.net/"
+const PORT = process.env.PORT || 3000;
 
 function setUp(server) {
     const NODE_ENV = process.env.NODE_ENV || "production";
@@ -14,9 +13,10 @@ function setUp(server) {
 (async () => {
     mongoose.set("strictQuery", true);
     try {
-        await mongoose.connect(process.env.ATLAS_URI, { dbName: "users" });
+        await mongoose.connect(process.env.ATLAS_URI, { dbName: "carpooltinder" });
     } catch (_) {
         console.log("Couldn't connect to the database");
+        console.log(_);
     }
     let server = app.listen(PORT, () => {
         console.log("Server Started on port: http://localhost:" + PORT);
