@@ -11,7 +11,7 @@ export default function reducer(state, action) {
     case ACTIONS.SET_LOGIN_STATUS:
       return {
         ...state,
-        isLoggedin: action.payload.isLoggedin,
+        isLoggedIn: action.payload.isLoggedIn,
       };
 
     case ACTIONS.UPDATE_USER:

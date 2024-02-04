@@ -6,7 +6,7 @@ export const ProfileContext = React.createContext();
 
 function ProfileContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, {
-    isLoggedin: false,
+    isLoggedIn: false,
     user: {
       age: 0,
       email: "none",
