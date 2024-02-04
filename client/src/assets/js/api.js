@@ -1,7 +1,7 @@
 import { SERVER_URL } from "./consts.js";
 
-export const HTTPInterface = {
-  SERVER_URL: `${SERVER_URL}/api`,
+const apiInterface = {
+  SERVER_URL: `${SERVER_URL}`,
 
   GET: async function (endpoint) {
     const response = await fetch(`${this.SERVER_URL}/${endpoint}`);
@@ -16,22 +16,7 @@ export const HTTPInterface = {
         "content-type": "application/json",
       },
     });
-
     return await response.json();
-  },
-
-  DELETE: async function (endpoint) {
-    const response = await fetch(`${this.SERVER_URL}/${endpoint}`, {
-      method: "DELETE",
-    });
-    return response.status;
-  },
-
-  PATCH: async function (endpoint) {
-    const response = await fetch(`${this.SERVER_URL}/${endpoint}`, {
-      method: "PATCH",
-    });
-    return response.status;
   },
 
   PUT: async function (endpoint, data) {
@@ -46,17 +31,22 @@ export const HTTPInterface = {
   },
 };
 
-export default class HTTPManager {
-  constructor() {
-    // endpoints
-    this.suitableUsersURL = "songs";
-  }
-
-  /**
-   * @returns {Promise}
-   */
-  async fetchSuitableUser() {
-    const users = await HTTPInterface.GET(`${this.suitableUsersURL}`);
+export const apiManager = {
+  fetchSuitableUsers: async (prefs) => {
+    const users = await apiInterface.POST(
+      `${SERVER_URL}/suitable-users`,
+      prefs
+    );
     return users;
-  }
-}
+  },
+  fetchUser: async (email) => {
+    const user = await apiInterface.POST(`${SERVER_URL}/user`, email);
+    return user;
+  },
+  setUser: async (user) => {
+    await apiInterface.POST(`${SERVER_URL}/update-user`, user);
+  },
+  setAvatar: async (email) => {
+    await apiInterface.POST(`${SERVER_URL}/update-avatar`, email);
+  },
+};
