@@ -1,4 +1,5 @@
 import express from 'express';
+import User from "../database/User.js"
 
 export const userRouter = express.Router();
 

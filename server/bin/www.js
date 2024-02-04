@@ -1,4 +1,4 @@
-import app from "../routes/app.js";
+import app from "../server.js";
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 dotenv.config();
@@ -17,6 +17,7 @@ function setUp(server) {
         await mongoose.connect(process.env.ATLAS_URI, { dbName: "users" });
     } catch (_) {
         console.log("Couldn't connect to the database");
+        console.log(_);
     }
     let server = app.listen(PORT, () => {
         console.log("Server Started on port: http://localhost:" + PORT);
