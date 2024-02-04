@@ -3,9 +3,16 @@ import "./home.css";
 import { useContext, useEffect, useState } from "react";
 import { ProfileContext } from "../contexts/ProfileContexteProvider";
 import { ACTIONS } from "../reducers/reducer";
+import * as FetchModule from "../assets/js/FetchModule"
 
 function Home() {
   const { state, dispatch } = useContext(ProfileContext);
+  const [users, setUsers] = useState([{
+    username: "empty",
+    firstname: "empty",
+    lastname: "empty",
+    email: "empty"
+  }])
 
   const testfunc = () => {
     dispatch({
@@ -20,6 +27,17 @@ function Home() {
       },
     });
   };
+
+  useEffect(() => {
+    (async () => {
+      const url = "/api/test";
+      const data = await FetchModule.postData(url, undefined, "POST");
+      console.log(data)
+      if (data) {
+        setUsers([...data])
+      }
+    })();
+  }, []);
 
   return (
     <div className="home">
@@ -38,6 +56,13 @@ function Home() {
       <div onClick={testfunc} style={{ backgroundColor: "red" }}>
         button
       </div>
+      {
+        users.map((user, i) => {
+          return (<div key={i}>
+            <p>firstname: {user.firstname}</p>
+          </div>)
+        })
+      }
     </div>
   );
 }

@@ -2,7 +2,7 @@ import express from 'express';
 
 export const userRouter = express.Router();
 
-userRouter.get("/", async (req, res, next) => {
+userRouter.get("/test", async (req, res, next) => {
     let query = getUriParams(req.query);
     const total = await User.countDocuments(query);
     const user = await User.findOne(query).skip(0).lean();
