@@ -1,7 +1,6 @@
 // import React from "react";
 import { Outlet } from "react-router-dom";
-import NavBar from "../components/Navbar.jsx";
-// import ProfileContexteProvider from "../contexts/ProfileContexteProvider";
+import NavBar from "../components/Navigation.jsx";
 
 function Root() {
   return (

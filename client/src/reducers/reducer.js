@@ -1,9 +1,12 @@
 // reducer
 import { apiManager } from "../assets/js/api";
+import { DEFAULT_USER } from "../assets/js/consts";
 
 export const ACTIONS = {
   SET_LOGIN_STATUS: "set_login_status ",
+  SET_PROFILE_STATUS: "set_profile_status ",
   UPDATE_USER: "update_user",
+  CLEAR_USER: "clear_user",
 };
 
 export default function reducer(state, action) {
@@ -11,8 +14,16 @@ export default function reducer(state, action) {
     case ACTIONS.SET_LOGIN_STATUS:
       return {
         ...state,
-        isLoggedin: action.payload.isLoggedin,
+        isLoggedIn: action.payload.isLoggedIn,
       };
+    case ACTIONS.SET_PROFILE_STATUS:
+      return {
+        ...state,
+        isProfileUp: action.payload.isProfileUp,
+      };
+
+    case ACTIONS.CLEAR_USER:
+      return DEFAULT_USER;
 
     case ACTIONS.UPDATE_USER:
       return {
