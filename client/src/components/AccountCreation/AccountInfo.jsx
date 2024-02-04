@@ -1,6 +1,7 @@
 import './AccountInfo.css';
 import { useState, useRef, useEffect } from "react";
 import { RiImageEditFill, RiSave3Line, RiCloseCircleLine } from "react-icons/ri";
+import * as FetchModule from "../../assets/js/FetchModule"
 
 function AccountInfo() {
     const originalProfileData = {
@@ -33,7 +34,7 @@ function AccountInfo() {
 
     const saveAvatar = async () => {
         if (validateImageForm(image)) {
-            // FetchModule.readImage(image, validateImageForm, postImage);
+            FetchModule.readImage(image, validateImageForm, postImage);
             setEditingAvatar(false);
         }
     }
@@ -44,8 +45,7 @@ function AccountInfo() {
     }
 
     async function postImage(data) {
-        const newData = {};//TODO remove
-        // const newData = await FetchModule.postImageAPI("/api/update_avatar", data);
+        const newData = await FetchModule.postImageAPI("/api/update_avatar", data);
         if (newData) {
             setProfileData(newData)
         }
@@ -151,7 +151,6 @@ function AccountInfo() {
                             }}
                             maxLength={5}>{profileData.lastname}</h2>
                     </div>
-
                 </div>
             </div>
         </div>
