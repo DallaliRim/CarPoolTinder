@@ -4,12 +4,12 @@ const apiInterface = {
   SERVER_URL: `${SERVER_URL}`,
 
   GET: async function (endpoint) {
-    const response = await fetch(`${this.SERVER_URL}/${endpoint}`);
+    const response = await fetch(`${endpoint}`);
     return await response.json();
   },
 
   POST: async function (endpoint, data) {
-    const response = await fetch(`${this.SERVER_URL}/${endpoint}`, {
+    const response = await fetch(`${endpoint}`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -20,7 +20,7 @@ const apiInterface = {
   },
 
   PUT: async function (endpoint, data) {
-    const response = await fetch(`${this.SERVER_URL}/${endpoint}`, {
+    const response = await fetch(`${endpoint}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -33,20 +33,19 @@ const apiInterface = {
 
 export const apiManager = {
   fetchSuitableUsers: async (prefs) => {
-    const users = await apiInterface.POST(
-      `${SERVER_URL}/suitable-users`,
-      prefs
-    );
+    console.log("here 1")
+    const users = await apiInterface.POST("/api/suitable-users", prefs);
+    console.log(users)
     return users;
   },
   fetchUser: async (email) => {
-    const user = await apiInterface.POST(`${SERVER_URL}/user`, email);
+    const user = await apiInterface.POST(`/api/user`, email);
     return user;
   },
   setUser: async (user) => {
-    await apiInterface.POST(`${SERVER_URL}/update-user`, user);
+    await apiInterface.POST(`/api/update-user`, user);
   },
   setAvatar: async (email) => {
-    await apiInterface.POST(`${SERVER_URL}/update-avatar`, email);
+    await apiInterface.POST(`/api/update-avatar`, email);
   },
 };

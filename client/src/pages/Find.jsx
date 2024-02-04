@@ -1,28 +1,41 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { ProfileContext } from "../contexts/ProfileContexteProvider";
 import { ACTIONS } from "../reducers/reducer";
 
 import { Container, Row } from "react-bootstrap";
+import { apiManager } from "../assets/js/api";
 
 function Find() {
   const { state, dispatch } = useContext(ProfileContext);
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    console.log(state);
-    if (state.isLoggedIn & state.isProfileUp) {
-      // fetch users to dipslay
-    }
-  }, []);
+    // console.log(state);
+    (async () => {
+      if (state.isLoggedIn & state.isProfileUp) {
+        // fetch users to dipslay
+        const newUsers = await apiManager.fetchSuitableUsers();
+        console.log(newUsers)
+        setUsers(newUsers.body)
+      }
+    })()
+  }, [state]);
 
   return (
     <Container>
       {state.isLoggedIn & state.isProfileUp ? (
-        <div className="mx-auto">hi</div>
-      ) : (
-        <div>Please set a profile up to start finding a car bud!</div>
-      )}
+        users.map((user, i) => {
+          console.log(user);
+          return (
+            <div key={i}> {user.first} </div>
+          )
+        })
+      )
+        :
+        (
+          <div>Please set a profile up to start finding a car bud!</div>
+        )}
     </Container>
   );
 }
