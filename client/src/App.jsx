@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import CreateAccount from "./pages/CreateAccount";
 import Root from "./pages/Root";
 import Profile from "./pages/Profile";
+import ProfileContextProvider from "./contexts/ProfileContexteProvider";
 
 const routes = [
   {
@@ -19,7 +20,11 @@ const routes = [
 const router = createBrowserRouter(routes);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <ProfileContextProvider>
+      <RouterProvider router={router}></RouterProvider>;
+    </ProfileContextProvider>
+  );
 }
 
 export default App;
