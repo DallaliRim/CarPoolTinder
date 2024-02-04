@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-const buildPath = path.resolve(__dirname, "..", "..", "client", "build");
+const buildPath = path.resolve(__dirname, "..", "..", "client", "dist");
 app.use(express.static(buildPath));
 function html(req, _, next) {
     if (req.accepts('html')) {
