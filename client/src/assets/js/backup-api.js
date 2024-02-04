@@ -42,7 +42,7 @@ export default async function findUserByEmail(email) {
   }
 }
 
-export async function getAllUsers() {
+export default async function getAllUsers() {
     const client = new MongoClient(fullConnectionString, options);
   
     try {

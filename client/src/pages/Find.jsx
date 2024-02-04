@@ -10,6 +10,7 @@ function Find() {
   const [users, setUsers] = useState();
 
   useEffect(() => {
+    console.log(state);
     if (state.isLoggedIn & state.isProfileUp) {
       // fetch users to dipslay
     }
@@ -18,9 +19,7 @@ function Find() {
   return (
     <Container>
       {state.isLoggedIn & state.isProfileUp ? (
-        <Row>
-          <div>Find buddy page</div>
-        </Row>
+        <div className="mx-auto">hi</div>
       ) : (
         <div>Please set a profile up to start finding a car bud!</div>
       )}

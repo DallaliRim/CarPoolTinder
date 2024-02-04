@@ -36,7 +36,12 @@ function Profile() {
     e.preventDefault();
     dispatch({
       type: ACTIONS.UPDATE_USER,
-      payload: { isProfileUp: true, user: formData },
+      payload: { user: formData },
+    });
+
+    dispatch({
+      type: ACTIONS.SET_PROFILE_STATUS,
+      payload: { isProfileUp: true },
     });
     // Add logic to save data using apiManager if required
   };
@@ -268,7 +273,12 @@ function Profile() {
               </Row>
             </Card>
 
-            <Button className="m-4" variant="primary" type="submit">
+            <Button
+              onSubmit={handleSubmit}
+              className="m-4"
+              variant="primary"
+              type="submit"
+            >
               Save Changes
             </Button>
           </Form>
