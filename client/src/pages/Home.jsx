@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import "./home.css";
 import { useContext, useEffect, useState } from "react";
 import { ProfileContext } from "../contexts/ProfileContexteProvider";
 import { ACTIONS } from "../reducers/reducer";
