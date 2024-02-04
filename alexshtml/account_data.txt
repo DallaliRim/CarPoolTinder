@@ -1,0 +1,9 @@
+firstName: Alex
+lastName: Chneerov
+dob: 
+gender: male
+preferredGender: male
+radius: 10
+carPreference: on
+ageMin: 20
+ageMax: 30
