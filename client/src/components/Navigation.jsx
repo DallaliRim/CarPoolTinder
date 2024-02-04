@@ -17,6 +17,12 @@ function Navigation() {
     });
   };
 
+  const onLogoutHandler = () => {
+    dispatch({
+      type: ACTIONS.CLEAR_USER,
+    });
+  };
+
   console.log(state);
 
   return (
@@ -33,13 +39,21 @@ function Navigation() {
               Find
             </Nav.Link>
 
+            <Nav.Link as={NavLink} to="/profile">
+              Profile
+            </Nav.Link>
+
             {state.isLoggedIn ? (
-              <Nav.Link as={NavLink} to="/profile">
-                Profile
+              <Nav.Link onClick={onLogoutHandler} as={NavLink} to="/">
+                Logout
               </Nav.Link>
             ) : (
               // temporary login
-              <Nav.Link onClick={tempLogin} as={NavLink} to="/find">
+              <Nav.Link
+                onClick={tempLogin}
+                as={NavLink}
+                to={state.isProfileUp ? "/find" : "/profile"}
+              >
                 Login
               </Nav.Link>
               // <Nav.Link as={NavLink} to="/login">

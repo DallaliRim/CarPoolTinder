@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { ProfileContext } from "../contexts/ProfileContexteProvider";
 import { ACTIONS } from "../reducers/reducer";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Home() {
   const { state, dispatch } = useContext(ProfileContext);
@@ -22,17 +22,12 @@ function Home() {
   };
 
   return (
-    <Container>
-      <div className="home">
-        <div>
-          test email : {state.user.email} & country :
-          {state.user.location.country} & province:{" "}
-          {state.user.location.province} & logged? {state.isLoggedIn.toString()}
-        </div>
-        <div onClick={testfunc} style={{ backgroundColor: "red" }}>
-          button
-        </div>
-      </div>
+    <Container className="text-center">
+      <Row className="">
+        <Col>1</Col>
+        <Col>2</Col>
+        <Col>3</Col>
+      </Row>
     </Container>
   );
 }
