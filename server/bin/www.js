@@ -14,7 +14,7 @@ function setUp(server) {
 (async () => {
     mongoose.set("strictQuery", true);
     try {
-        await mongoose.connect(process.env.ATLAS_URI, { dbName: "users" });
+        await mongoose.connect(ATLAS_URI, { dbName: "users" });
     } catch (_) {
         console.log("Couldn't connect to the database");
         console.log(_);
