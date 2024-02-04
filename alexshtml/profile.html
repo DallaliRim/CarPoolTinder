@@ -12,7 +12,7 @@
         }
 
         header {
-            background-color: #3498db;
+            background-color: #4CAF50;
             padding: 20px;
             color: #fff;
             text-align: center;
@@ -30,50 +30,67 @@
             text-align: left;
             margin-top: 20px;
         }
+        button {
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>User Profile</h1>
-    </header>
 
-    <section>
-        <dl id="profileData">
-            <!-- Profile data will be dynamically added here -->
-        </dl>
-    </section>
+<!-- New row for buttons -->
+<div style="width: 100%; text-align: center; margin-bottom: 20px;">
+    <button onclick="window.location.href='buddy_page.html'">Buddy Page</button>
+    <button onclick="window.location.href='profile.html'">Profile</button>
+</div>
 
-    <script>
-        window.onload = function() {
-            // Fetch profile data from account_data.txt
-            fetch('account_data.txt')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('File not found');
+<header>
+    <h1>User Profile</h1>
+</header>
+
+<section>
+    <dl id="profileData">
+        <!-- Profile data will be dynamically added here -->
+    </dl>
+</section>
+
+<script>
+    window.onload = function() {
+        // Fetch profile data from account_data.txt
+        fetch('account_data.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('File not found');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Parse the data and create profile elements
+                var profileDataArray = data.split('\n');
+                var dl = document.getElementById('profileData');
+
+                profileDataArray.forEach(function(item) {
+                    var [key, value] = item.split(': ');
+                    if (key && value) {
+                        var dt = document.createElement('dt');
+                        var dd = document.createElement('dd');
+                        dt.textContent = key.trim();
+                        dd.textContent = value.trim();
+                        dl.appendChild(dt);
+                        dl.appendChild(dd);
                     }
-                    return response.text();
-                })
-                .then(data => {
-                    // Parse the data and create profile elements
-                    var profileDataArray = data.split('\n');
-                    var dl = document.getElementById('profileData');
-
-                    profileDataArray.forEach(function(item) {
-                        var [key, value] = item.split(': ');
-                        if (key && value) {
-                            var dt = document.createElement('dt');
-                            var dd = document.createElement('dd');
-                            dt.textContent = key.trim();
-                            dd.textContent = value.trim();
-                            dl.appendChild(dt);
-                            dl.appendChild(dd);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error(error);
                 });
-        };
-    </script>
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
+</script>
+
 </body>
 </html>
