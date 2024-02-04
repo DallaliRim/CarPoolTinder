@@ -5,13 +5,12 @@ export const userRouter = express.Router();
 
 userRouter.get("/test", async (req, res, next) => {
     let query = req.query;
-    const total = await User.countDocuments(query);
-    const user = await User.findOne(query).skip(0).lean();
+    const user = await User.findOne(req.query);
     if (user === null) {
         res.json({ body: { user: user } });
         return;
     }
-    res.json({ body: user.user });
+    res.json({ body: user });
 });
 
 userRouter.post("/users", async (req, res, next) => {
