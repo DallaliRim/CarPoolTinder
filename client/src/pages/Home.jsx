@@ -10,7 +10,7 @@ function Home() {
     username: "empty",
     firstname: "empty",
     lastname: "empty",
-    email: "empty"
+    email: "bob.bobson@gmail.com"
   }])
 
   const testfunc = () => {
@@ -29,8 +29,8 @@ function Home() {
 
   useEffect(() => {
     (async () => {
-      const url = "/api/test";
-      const data = await FetchModule.postData(url, undefined, "POST");
+      const url = "/api/users";
+      const data = await FetchModule.postData(url, { email: "bob.bobson@gmail.com" }, "POST");
       console.log(data)
       if (data) {
         setUsers([...data])

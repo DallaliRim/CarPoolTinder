@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ProfileContext } from "../contexts/ProfileContexteProvider";
 import { ACTIONS } from "../reducers/reducer";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
