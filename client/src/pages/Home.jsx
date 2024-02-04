@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import "./home.css";
 import { useContext, useEffect, useState } from "react";
 import { ProfileContext } from "../contexts/ProfileContexteProvider";
 import { ACTIONS } from "../reducers/reducer";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Home() {
   const { state, dispatch } = useContext(ProfileContext);
@@ -22,23 +22,13 @@ function Home() {
   };
 
   return (
-    <div className="home">
-      <p>
-        {console.log(state)}
-        <li>
-          <NavLink className="navlink" to="/create-account">
-            Create Accounts
-          </NavLink>
-        </li>{" "}
-      </p>
-      <div>
-        test email : {state.user.email} & country :{state.user.location.country}{" "}
-        & province: {state.user.location.province}
-      </div>
-      <div onClick={testfunc} style={{ backgroundColor: "red" }}>
-        button
-      </div>
-    </div>
+    <Container className="text-center">
+      <Row className="">
+        <Col>1</Col>
+        <Col>2</Col>
+        <Col>3</Col>
+      </Row>
+    </Container>
   );
 }
 
