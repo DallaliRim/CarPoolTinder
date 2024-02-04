@@ -3,9 +3,9 @@ import User from "../database/user.js"
 
 export const userRouter = express.Router();
 
-userRouter.get("/test", async (req, res, next) => {
-    let query = req.query;
-    const user = await User.findOne(req.query);
+userRouter.get("/suitable-users", async (req, res, next) => {
+    // let query = req.query;
+    const user = await User.find();
     if (user === null) {
         res.json({ body: { user: user } });
         return;
