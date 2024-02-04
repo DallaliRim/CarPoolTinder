@@ -4,7 +4,9 @@ import User from "../database/user.js"
 export const userRouter = express.Router();
 
 userRouter.get("/test", async (req, res, next) => {
-    const user = await User.findOne(query).lean();
+    let query = req.query;
+    const total = await User.countDocuments(query);
+    const user = await User.findOne(query).skip(0).lean();
     if (user === null) {
         res.json({ body: { user: user } });
         return;
