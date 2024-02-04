@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./navbar.css";
 import { MdOutlineHome } from "react-icons/md";
 import { NavLink, Link } from "react-router-dom";
 
