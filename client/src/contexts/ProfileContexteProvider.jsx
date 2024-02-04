@@ -1,11 +1,49 @@
 import React, { useReducer } from "react";
+import reducer from "../reducers/reducer";
+import { apiManager } from "../assets/js/api";
 
-const ProfileContext = React.createContext();
+export const ProfileContext = React.createContext();
 
-function ProfileContexteProvider() {
-  const [state, dispatch] = useReducer();
+function ProfileContextProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, {
+    isLoggedin: false,
+    user: {
+      age: 0,
+      email: "none",
+      first: "none",
+      last: "none",
+      profilePicLink: "none",
+      gender: "none",
+      location: {
+        country: "none",
+        province: "none",
+        city: "none",
+        postalCode: "none",
+      },
+      car: { modal: "none", plate: "none" },
+      preferences: {
+        gender: "none",
+        radius: 0,
+        hasCar: false,
+        ageMin: 0,
+        ageMax: 0,
+      },
+      interests: {
+        musicGenre: [],
+        spotifyPlalistLink: "none",
+        occupation: "none",
+        interests: [],
+        socialLinks: [],
+        about: "none",
+      },
+    },
+  });
 
-  return <div>ProfileContexteProvider</div>;
+  return (
+    <ProfileContext.Provider value={{ state, dispatch, apiManager }}>
+      {children}
+    </ProfileContext.Provider>
+  );
 }
 
-export default ProfileContexteProvider;
+export default ProfileContextProvider;
